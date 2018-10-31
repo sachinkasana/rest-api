@@ -1,0 +1,4 @@
+{
+    "connectionString": "mongodb://localhost/qms",
+    "secret": "Osr9MorupyKc4y9MWg5Sn4qS1pvESsEq"
+}

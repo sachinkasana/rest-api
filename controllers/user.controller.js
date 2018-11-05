@@ -56,7 +56,10 @@ function registerUser(req, res, next) {
 function login(req, res, next) {
   userService.login(req.body.email).then(val => {
     if (!val) {
-      next("No user found");
+      res.send({message:'No user found',title:'Login',messageType:'string'});
+     // next({code:401,msg:"No user found"});
+      //test.throw(new Error('test error'));
+
     } else {
       bcrypt.compare(req.body.password, val.password).then(isMatch => {
         if (isMatch) {
@@ -78,7 +81,8 @@ function login(req, res, next) {
             });
           })
         } else {
-          return next("Password incorrect")
+          res.send({message:'Wrong password',title:'Login',messageType:'string'});
+          //return next({code:401,msg:"Password incorrect"})
         }
       })
     }
